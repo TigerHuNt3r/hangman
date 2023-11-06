@@ -14,7 +14,9 @@ class GameViewController extends GetxController {
     "Intelligence",
     "Full Scale IQ",
     "Battle IQ",
-    "Overall EQ",
+    "Full Scale EQ",
+    "Full Scale SQ",
+    "Thinink",
     "Emotional Intelligence",
     "Strategy",
     "Intelligent Psycho",
@@ -27,6 +29,10 @@ class GameViewController extends GetxController {
     "Smart",
     "Empathy",
     "Logical Thinking",
+    "illogical Thinking",
+    "Johan Liebert",
+    "Light Yagami",
+    "IQ",
     "Creative Thinking",
     "Fast Thinking",
     "Academic Thinking",
@@ -129,7 +135,7 @@ class GameViewController extends GetxController {
       tippek.add(Tipp(karakter: betu, talaltE: true));
       update();
       if(nyertEaFelhasznalo()){
-        Get.to(EndView("A PICSÁBA! Megmentettél egy cigányt!", hibakSzama()));
+        Get.to(EndView("GRATULÁLUNK! Elkaptad Robit.", hibakSzama()));
       }
     } else {
       tippek.add(Tipp(karakter: betu, talaltE: false));
