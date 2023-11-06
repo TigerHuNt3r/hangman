@@ -64,13 +64,14 @@ class GameViewController extends GetxController {
   String randomSzoveg = "";
   String csillagosSzoveg = "";
 
-  void randomSzovegGeneralasa() {
+  void init() {
     int index = Random().nextInt(szovegek.length);
     randomSzoveg = szovegek[index];
     csillagosSzoveg = "";
     for (int i = 0; i < randomSzoveg.length; i++) {
       csillagosSzoveg += "*";
     }
+    tippek = [];
     update();
   }
 
@@ -134,7 +135,7 @@ class GameViewController extends GetxController {
       tippek.add(Tipp(karakter: betu, talaltE: false));
       update();
       if(vesztettEaFelhasznalo()){
-        Get.to(EndView("GRATULÁLUNK! Felakasztottál egy cigányt! Megoldás: ${randomSzoveg} ", hibakSzama()));
+        Get.to(EndView("GRATULÁLUNK ELVTÁRS! Felakasztottál egy cigányt! Megoldás: ${randomSzoveg} ", hibakSzama()));
       }
     }
   }
@@ -142,6 +143,6 @@ class GameViewController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    randomSzovegGeneralasa();
+   init();
   }
 }

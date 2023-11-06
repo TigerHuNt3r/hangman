@@ -15,7 +15,7 @@ class EndView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("images/$index.jpg"),
+            Image.asset("images/$index.png"),
             Text(
               uzenet,
               style: TextStyle(fontSize: 30),
