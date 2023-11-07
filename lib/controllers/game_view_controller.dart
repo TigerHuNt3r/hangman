@@ -1,10 +1,15 @@
 // játék logika
 import 'dart:math';
+import 'package:flutter/widgets.dart';
 import 'package:hangman/models/tipp.dart';
 import 'package:get/get.dart';
 import 'package:hangman/views/end_view.dart';
 
 class GameViewController extends GetxController {
+  GameViewController(this.context);
+
+  BuildContext context;
+
   List<String> szovegek = [
     "Psycho",
     "Intellect",
@@ -66,6 +71,32 @@ class GameViewController extends GetxController {
     "Joker",
     "Albert Wesker",
     "Gustavo Fring",
+    "Maggie Rhee",
+    "Rick Grimes",
+    "Daryl Dixon",
+    "Negan Smith",
+    "Dexter Morgan",
+    "Heisenberg",
+    "Kid Named Finger",
+    "GTA Teglas City",
+    "Zsolti is gay",
+    "Jigsaw",
+    "Jesse Pinkman",
+    "Michael",
+    "Trevor Philips",
+    "Franklin",
+    "Maggie, I'll Find you",
+    "Say my name",
+    "We are The Walking Dead",
+    "Hearts of Iron",
+    "Glenn Rhee",
+    "Arthur Morgan",
+    "Tommy Shelby",
+    "Jill Valentine",
+    "Lara Croft",
+    "Claire Refdield",
+    "Leon S. Kennedy",
+    "Toth Robbanto",
   ];
   String randomSzoveg = "";
   String csillagosSzoveg = "";
@@ -110,7 +141,6 @@ class GameViewController extends GetxController {
     else
       return false;
   }
-  
 
   int hibakSzama() {
     int szamalao = 0;
@@ -134,21 +164,38 @@ class GameViewController extends GetxController {
 
       tippek.add(Tipp(karakter: betu, talaltE: true));
       update();
-      if(nyertEaFelhasznalo()){
-        Get.to(EndView("GRATULÁLUNK! Elkaptad Robit.", hibakSzama()));
+      if (nyertEaFelhasznalo()) {
+        Get.to(EndView("GRATULÁLUNK! Elkaptad a Kovidot.", hibakSzama()));
       }
     } else {
       tippek.add(Tipp(karakter: betu, talaltE: false));
       update();
-      if(vesztettEaFelhasznalo()){
-        Get.to(EndView("GRATULÁLUNK ELVTÁRS! Felakasztottál egy cigányt! Megoldás: ${randomSzoveg} ", hibakSzama()));
+      if (vesztettEaFelhasznalo()) {
+        Get.to(EndView(
+            "GRATULÁLUNK ELVTÁRS! Felakasztottál egy cigányt! Megoldás: ${randomSzoveg} ",
+            hibakSzama()));
       }
     }
   }
 
+  Future kepekLetarolsaCacheMemoriaba() async {
+    await precacheImage(AssetImage('images/0.png'), context);
+    await precacheImage(AssetImage('images/1.png'), context);
+    await precacheImage(AssetImage('images/2.png'), context);
+    await precacheImage(AssetImage('images/3.png'), context);
+    await precacheImage(AssetImage('images/4.png'), context);
+    await precacheImage(AssetImage('images/5.png'), context);
+    await precacheImage(AssetImage('images/6.png'), context);
+    await precacheImage(AssetImage('images/robi2.jpg'), context);
+  }
+
+  bool theInitIsDone = false;
+
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
-   init();
+    await kepekLetarolsaCacheMemoriaba();
+    init();
+    theInitIsDone = true;
   }
 }

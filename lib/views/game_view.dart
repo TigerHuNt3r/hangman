@@ -6,13 +6,14 @@ import 'package:hangman/views/widgets/letter_border.dart';
 import 'package:hangman/views/widgets/letter_button.dart';
 
 class GameView extends StatelessWidget {
-  GameViewController controller = Get.put(GameViewController());
+
   @override
   Widget build(BuildContext context) {
+      GameViewController controller = Get.put(GameViewController(context));
     return GetBuilder<GameViewController>(
         init: controller,
         builder: (_) {
-          return Scaffold(
+          return (!controller.theInitIsDone)?Center(child: CircularProgressIndicator()):Scaffold(
             appBar: AppBar(
               title: Text("Hangman"),
             ),
@@ -44,7 +45,7 @@ class GameView extends StatelessWidget {
                     controller: controller,
                   ),
                   LetterHolder(
-                    letters: ["W", " ", "", "", "",],
+                    letters: ["W", " ", ",", "'", ".",],
                     controller: controller,
                   ),
                 ],
