@@ -9,14 +9,41 @@ class HomeViewController extends GetxController {
   TextEditingController prison = TextEditingController();
 
   void jatekInditasa() {
-    if (firstname.text != "" && lastname.text != "" && prison != "") {
+    if (firstname.text != "" && lastname.text != "" && prison.text != "") {
       Get.to(GameView(), transition: Transition.cupertino);
     } else if (firstname.text == "") {
-      Get.showSnackbar(GetSnackBar(message: "Nem adtad meg a keresztneved!"));
+      Get.dialog(CupertinoAlertDialog(
+        title: Text("Hiba"),
+        content: Text("Nem adtad meg a keresztneved!"),
+        actions: [
+          CupertinoDialogAction(child: Text("ok"),
+          onPressed: () {
+            Get.back();
+          },)
+        ],
+      ));
     } else if (lastname.text == "") {
-      Get.showSnackbar(GetSnackBar(message: "Nem adtad meg a vezetékneved!"));
+            Get.dialog(CupertinoAlertDialog(
+        title: Text("Hiba"),
+        content: Text("Nem adtad meg a vezetékneved!"),
+        actions: [
+          CupertinoDialogAction(child: Text("ok"),
+          onPressed: () {
+            Get.back();
+          },)
+        ],
+      ));
     } else if (prison.text == "") {
-      Get.showSnackbar(GetSnackBar(message: "Nem adtad meg a börtön lakhelyed! :)"));
+            Get.dialog(CupertinoAlertDialog(
+        title: Text("Hiba"),
+        content: Text("Nem adtad meg a börtönöd nevét!"),
+        actions: [
+          CupertinoDialogAction(child: Text("ok"),
+          onPressed: () {
+            Get.back();
+          },)
+        ],
+      ));
     }
   }
 }

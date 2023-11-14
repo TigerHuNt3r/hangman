@@ -165,7 +165,7 @@ class GameViewController extends GetxController {
       tippek.add(Tipp(karakter: betu, talaltE: true));
       update();
       if (nyertEaFelhasznalo()) {
-        Get.to(EndView("GRATULÁLUNK! Elkaptad a Kovidot.", hibakSzama()));
+        Get.to(EndView("GRATULÁLUNK! Megmentelted ezt a lényt.", hibakSzama()));
       }
     } else {
       tippek.add(Tipp(karakter: betu, talaltE: false));
